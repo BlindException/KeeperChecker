@@ -42,7 +42,7 @@ class LoginController extends Controller
 
         $leagues = json_decode($response->getBody())->fantasy_content->users->user->games->game->leagues;
         // Process the leagues data here
-        return redirect()->route('keepers.index', ['leagues' => $leagues,
+        return redirect()->route('pkeepers.index', ['leagues' => $leagues,
         ]);
     }
 }
