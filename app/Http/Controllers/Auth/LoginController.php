@@ -20,6 +20,7 @@ class LoginController extends Controller
         $user = Socialite::driver('yahoo')->user();
         // Handle the user data returned by Yahoo Fantasy API
         $code = request()->input('code');
+        dd($code);
         $state = request()->input('state');
         $client = new Client();
         $response = $client->request('POST', 'https://api.login.yahoo.com/oauth2/get_token', [
