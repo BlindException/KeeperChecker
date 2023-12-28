@@ -26,8 +26,8 @@ class KeeperController extends Controller
                     'grant_type' => 'authorization_code'
                 ]
             ]);
+            dd($response);
             $accessToken = json_decode($response->getBody())->access_token;
-            dd($accessToken);
             $client = new Client([
                 'headers' => [
                     'Authorization' => 'Bearer ' . $accessToken,
