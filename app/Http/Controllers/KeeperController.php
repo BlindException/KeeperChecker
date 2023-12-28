@@ -15,7 +15,6 @@ class KeeperController extends Controller
             $user = Socialite::driver('yahoo')->user();
             // Handle the user data returned by Yahoo Fantasy API
             $code = request()->input('code');
-            dd($code);
             $state = request()->input('state');
             $client = new Client();
             $response = $client->request('POST', 'https://api.login.yahoo.com/oauth2/get_token', [
@@ -28,6 +27,7 @@ class KeeperController extends Controller
                 ]
             ]);
             $accessToken = json_decode($response->getBody())->access_token;
+            dd($accessToken);
             $client = new Client([
                 'headers' => [
                     'Authorization' => 'Bearer ' . $accessToken,
