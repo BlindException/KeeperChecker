@@ -16,6 +16,7 @@ class KeeperController extends Controller
             // Handle the user data returned by Yahoo Fantasy API
             $code = request()->input('code');
             $state = request()->input('state');
+            dd($user);
             $client = new Client();
             $response = $client->request('POST', 'https://api.login.yahoo.com/oauth2/get_token', [
                 'form_params' => [
@@ -26,7 +27,7 @@ class KeeperController extends Controller
                     'grant_type' => 'authorization_code'
                 ]
             ]);
-            dd($response);
+
             $accessToken = json_decode($response->getBody())->access_token;
             $client = new Client([
                 'headers' => [
