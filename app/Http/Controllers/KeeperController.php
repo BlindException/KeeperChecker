@@ -24,9 +24,9 @@ class KeeperController extends Controller
             $body = $response->getBody();
             $data = json_decode($body, true);
             // Now you can access the user's profile data
-            $profile = $data['fantasy_content']['users'];
+            //$profile = $data['fantasy_content']['users'];
             // Do something with the profile data
-
+            dd($data);
             /*            $response = $client->request('GET', 'https://fantasysports.yahooapis.com/fantasy/v2/users/' . $user->id . '/leagues;game_keys=nfl', [
                             'headers' => [
                                 'Authorization' => 'Bearer ' . $accessToken,
