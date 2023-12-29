@@ -21,6 +21,9 @@ class KeeperController extends Controller
                     'Accept' => 'application/json',
                 ],
             ]);
+            $status = $response->getStatusCode();
+            $error = json_decode($response->getBody(), true)['error'];
+            dd('Status {$status} Error: {$error}');
             $body = $response->getBody();
             $data = json_decode($body, true);
             // Now you can access the leagues data
