@@ -15,7 +15,7 @@ class KeeperController extends Controller
             $user = Socialite::driver('yahoo')->user();
             $accessToken = $user->accessTokenResponseBody['access_token'];
             $client = new Client();
-            $response = $client->request('GET', 'https://fantasysports.yahooapis.com/fantasy/v2/users/' . $user->id . '/profile', [
+            $response = $client->request('GET', 'https://fantasysports.yahooapis.com/fantasy/v2/users;use_login=1/', [
                 'headers' => [
                     'Authorization' => 'Bearer ' . $accessToken,
                     'Accept' => 'application/json',
@@ -26,7 +26,7 @@ class KeeperController extends Controller
             // Now you can access the user's profile data
             $profile = $data['fantasy_content']['users'];
             // Do something with the profile data
-            dd($profile);
+
             /*            $response = $client->request('GET', 'https://fantasysports.yahooapis.com/fantasy/v2/users/' . $user->id . '/leagues;game_keys=nfl', [
                             'headers' => [
                                 'Authorization' => 'Bearer ' . $accessToken,
