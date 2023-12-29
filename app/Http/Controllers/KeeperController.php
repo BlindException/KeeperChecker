@@ -19,7 +19,7 @@ class KeeperController extends Controller
                 $response = $client->request('GET', 'https://fantasysports.yahooapis.com/fantasy/v2/users;use_login=1/games;game_keys=nfl/leagues', [
                     'headers' => [
                         'Authorization' => 'Bearer ' . $accessToken,
-                        'Accept' => 'application/json',
+                        'Accept' => 'text/xml',
                     ],
                 ]);
             } catch (\GuzzleHttp\Exception\ClientException $e) {
