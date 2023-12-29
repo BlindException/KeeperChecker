@@ -35,8 +35,7 @@ class LoginController extends Controller
             'fspt-w-lm-settings',
         ];
         return Socialite::driver('yahoo')
-            //->scopes($scopes)
-            ->with(['grant_type' => 'authorization_code'])
+            ->with(['grant_type' => 'authorization_code', 'scopes' => $scopes])
             ->redirect();
     }
 }
