@@ -16,7 +16,7 @@ class KeeperController extends Controller
             $accessToken = $user->accessTokenResponseBody['access_token'];
             $client = new Client();
             try {
-                $response = $client->request('GET', 'https://fantasysports.yahooapis.com/fantasy/v2/;use_login=1//', [
+                $response = $client->request('GET', 'https://fantasysports.yahooapis.com/fantasy/v2/;use_login=1/games/leagues', [
                     'headers' => [
                         'Authorization' => 'Bearer ' . $accessToken,
                         'Accept' => 'application/json',
@@ -31,7 +31,7 @@ class KeeperController extends Controller
             $data = json_decode($body, true);
             // Now you can access the leagues data
             dd($data);
-            //            $leagues = $data['fantasy_content']['users'][0]['user']['games'][0]['game']['leagues'];
+            $leagues = $data['fantasy_content']['users'][0]['user']['games'][0]['game']['leagues'];
             // Do something with the leagues data
             return view('pkeepers.index', ['leagues' => $leagues]);
         } else {
