@@ -30,9 +30,9 @@ class KeeperController extends Controller
             $body = $response->getBody()->getContents();
             $data = json_decode($body, true);
             // Now you can access the leagues data
-            dd($data);
+            $leagues = $data['fantasy_content']['users'][0]['user']['games'][0]['game']['leagues'];
             // Do something with the leagues data
-            return view('pkeepers.index', ['leagues' => $data]);
+            return view('pkeepers.index', ['leagues' => $leagues]);
         } else {
             abort('No Leagues');
         }
