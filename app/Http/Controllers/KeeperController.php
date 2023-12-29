@@ -16,10 +16,10 @@ class KeeperController extends Controller
             $accessToken = $user->accessTokenResponseBody['access_token'];
             $client = new Client();
             try {
-                $response = $client->request('GET', 'https://fantasysports.yahooapis.com/fantasy/v2/users;use_login=1/games;game_keys=nfl/leagues', [
+                $response = $client->request('GET', 'https://fantasysports.yahooapis.com/fantasy/v2/users;use_login=1/games;game_keys=nfl/', [
                     'headers' => [
                         'Authorization' => 'Bearer ' . $accessToken,
-                        'Accept' => 'text/xml',
+                        'Accept' => 'application/json',
                     ],
                 ]);
             } catch (\GuzzleHttp\Exception\ClientException $e) {
@@ -27,6 +27,7 @@ class KeeperController extends Controller
                 $responseBodyAsString = $response->getBody()->getContents();
                 dd($responseBodyAsString);
             }
+            dd($response);
             $body = $response->getBody();
             $data = json_decode($body, true);
             // Now you can access the leagues data
