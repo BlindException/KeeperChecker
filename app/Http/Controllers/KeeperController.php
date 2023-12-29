@@ -15,16 +15,18 @@ class KeeperController extends Controller
             $user = Socialite::driver('yahoo')->user();
             $accessToken = $user->accessTokenResponseBody['access_token'];
             $client = new Client();
-            $response = $client->request('GET', 'https://fantasysports.yahooapis.com/fantasy/v2/users/' . $user->id . '/leagues', [
-                'headers' => [
-                    'Authorization' => 'Bearer ' . $accessToken,
-                    'Accept' => 'application/json',
-                    'grant_type' => 'authorization_code',
-                ],
-            ]);
-            dd($response);
-            $status = $response->getStatusCode();
-            $error = json_decode($response->getBody(), true)['error'];
+            try {
+                $response = $client->request('GET', 'https://fantasysports.yahooapis.com/fantasy/v2/users;use_login=1/leagues', [
+                    'headers' => [
+                        'Authorization' => 'Bearer ' . $accessToken,
+                        'Accept' => 'application/json',
+                    ],
+                ]);
+            } catch (\GuzzleHttp\Exception\ClientException $e) {
+                $response = $e->getResponse();
+                $responseBodyAsString = $response->getBody()->getContents();
+                dd($responseBodyAsString);
+            }
             $body = $response->getBody();
             $data = json_decode($body, true);
             // Now you can access the leagues data
