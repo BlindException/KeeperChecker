@@ -19,6 +19,7 @@ class KeeperController extends Controller
                 'headers' => [
                     'Authorization' => 'Bearer ' . $accessToken,
                     'Accept' => 'application/json',
+                    'grant_type' => 'authorization_code',
                 ],
             ]);
             dd($response);
