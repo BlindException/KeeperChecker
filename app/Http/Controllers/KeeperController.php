@@ -14,7 +14,8 @@ class KeeperController extends Controller
         if (request()) {
             $user = Socialite::driver('yahoo')->user();
             $accessToken = $user->accessTokenResponseBody['access_token'];
-            dd('Token: ' . $user->token . ' Access Token: ' . $accessToken);
+            $string = 'Token: ' . $user->token . ' Access Token: ' . $accessToken;
+            dd($string);
             $client = new Client();
             $response = $client->request('GET', 'https://fantasysports.yahooapis.com/fantasy/v2/users/' . $user->id . '/leagues;game_keys=nfl', [
                 'headers' => [
