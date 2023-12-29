@@ -21,6 +21,9 @@ class KeeperController extends Controller
                     'Accept' => 'application/json',
                 ],
             ]);
+            $status = $response->getStatusCode();
+            $error = json_decode($response->getBody(), true)['error'];
+            dd($error . $status);
             $body = $response->getBody();
             $data = json_decode($body, true);
             // Now you can access the user's profile data
