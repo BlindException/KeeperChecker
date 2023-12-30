@@ -27,7 +27,7 @@ class KeeperController extends Controller
                 $responseBodyAsString = $response->getBody()->getContents();
                 dd($responseBodyAsString);
             }
-            dd($response->getHeader());
+            dd($response->getHeaders());
             $body = $response->getBody()->getContents();
             $data = json_decode($body, true);
             // Now you can access the leagues data
