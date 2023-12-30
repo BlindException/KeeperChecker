@@ -30,6 +30,7 @@ class KeeperController extends Controller
 
             $body = $response->getBody()->getContents();
             $xmlObject = simplexml_load_string($body);
+            dd($xmlObject);
             $data = json_decode($xmlObject, true);
             // Now you can access the leagues data
             dd($data);
