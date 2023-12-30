@@ -34,7 +34,7 @@ class KeeperController extends Controller
 
             $leagues = $xmlObject->leagues;
             // Do something with the leagues data
-            return view('pkeepers.index', ['leagues' => $leagues]);
+            return view('keepers.index', ['leagues' => $leagues]);
         } else {
             abort('No Leagues');
         }
