@@ -29,8 +29,8 @@ class KeeperController extends Controller
             }
 
             $body = $response->getBody()->getContents();
-            dd($body);
-            $data = json_decode($body, true);
+            $xmlObject = simplexml_load_string($body);
+            $data = json_decode($xmlObject, true);
             // Now you can access the leagues data
             dd($data);
             $leagues = $data['fantasy_content']['users'][0]['user']['games'][0]['game']['leagues'];
