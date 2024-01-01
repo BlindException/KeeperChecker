@@ -13,6 +13,7 @@ class KeeperController extends Controller
     {
         if (request()) {
             $user = Socialite::driver('yahoo')->user();
+            dd($user);
             $accessToken = $user->accessTokenResponseBody['access_token'];
             $client = new Client();
             try {
