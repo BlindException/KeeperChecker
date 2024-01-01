@@ -22,15 +22,6 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    $clientId = getenv('YAHOO_CLIENT_ID');
-    $clientSecret = getenv('YAHOO_CLIENT_SECRET');
-    $client = new Client();
-    $response = $client->request('GET', 'https://fantasysports.yahooapis.com/fantasy/v2/game/nfl/scoreboard;week=1;season=2023', [
-        'headers' => [
-            'Authorization' => 'Bearer ' . $clientId . ':' . $clientSecret,
-        ],
-    ]);
-    dd($response->getBody()->getContents());
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 

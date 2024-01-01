@@ -38,4 +38,14 @@ class LoginController extends Controller
             ->with(['scopes' => $scopes])
             ->redirect();
     }
+    public function handleYahooCallback()
+    {
+        $yahooUser = Socialite::driver('yahoo')->user();
+        dd($yahooUser);
+        $user = auth()->user();
+        $user->setYahooAccessTokenAttribute($yahooUser->token);
+        $user->setYahooRefreshTokenAttribute($yahooUser->refresh_token);
+        $user->setYahooExpiresAtAttribute($yahooUser->expires_in);
+        return redirect()->route('dashboard')->with(['message' => 'You have successfully authenticated with your Yahoo account. This app now has permission to view and/or make changes to your Yahoo fantasy league.']);
+    }
 }

@@ -13,9 +13,9 @@ return new class extends Migration {
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('access_token')->nullable()->default(null);
+            $table->text('access_token')->nullable()->default(null);
             $table->timestamp('expires_at')->nullable()->default(null);
-            $table->string('refresh_token')->nullable()->default(null);
+            $table->text('refresh_token')->nullable()->default(null);
         });
     }
 
