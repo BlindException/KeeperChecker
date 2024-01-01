@@ -35,7 +35,7 @@ class LoginController extends Controller
             'fspt-w-lm-settings',
         ];
         return Socialite::driver('yahoo')
-            ->with(['scopes' => $scopes])
+            //->with(['scopes' => $scopes])
             ->redirect();
     }
     public function handleYahooCallback()
