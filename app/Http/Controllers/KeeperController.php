@@ -16,7 +16,8 @@ class KeeperController extends Controller
             $accessToken = $user->accessTokenResponseBody['access_token'];
             $client = new Client();
             try {
-                $response = $client->request('GET', 'https://fantasysports.yahooapis.com/fantasy/v2/users;use_login=1/games;game_keys=nfl;seasons=2023;//leagues;//transactions;type=drop', [
+                //$response = $client->request('GET', 'https://fantasysports.yahooapis.com/fantasy/v2/users;use_login=1/games;game_keys=nfl;seasons=2023;//leagues;//transactions;type=drop', [
+                $response = $client->request('GET', 'https://fantasysports.yahooapis.com/fantasy/v2/transactions;type=drop;team_key=423.l.142134.t.7', [
                     'headers' => [
                         'Authorization' => 'Bearer ' . $accessToken,
                         'Accept' => 'application/json',
