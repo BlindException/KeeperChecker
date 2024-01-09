@@ -29,10 +29,11 @@ class KeeperController extends Controller
                 dd($responseBodyAsString);
             }
             $body = $response->getBody()->getContents();
+            dd($body);
             $xmlObject = simplexml_load_string($body);
             // Now you can access the leagues data
 
-            dd($xmlObject->attributes);
+            dd($xmlObject);
             // Do something with the leagues data
             return view('keepers.index', ['leagues' => $xmlObject]);
         } else {
