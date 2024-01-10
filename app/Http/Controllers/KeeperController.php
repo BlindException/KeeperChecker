@@ -36,7 +36,8 @@ class KeeperController extends Controller
                     $dropTransactions[] = $transaction;
                 }
             }
-            dd($dropTransactions[10]->players);
+
+            dd($dropTransactions[10]->players->player);
             $xmlObject = simplexml_load_string($body);
             // Now you can access the leagues data
 
