@@ -28,8 +28,16 @@ class KeeperController extends Controller
                 $responseBodyAsString = $response->getBody()->getContents();
                 dd($responseBodyAsString);
             }
-            $body = $response->getBody()->getContents();
-            dd($body);
+            //$body = $response->getBody()->getContents();
+            $xml = simplexml_load_string($response);
+            $dropTransactions = [];
+            foreach ($xml->league->transactions->transaction as $transaction) {
+                if ($transaction->type == 'drop') {
+
+                    $dropTransactions[] = $transaction;
+                }
+            }
+            dd($dropTransactions);
             $xmlObject = simplexml_load_string($body);
             // Now you can access the leagues data
 
