@@ -33,11 +33,10 @@ class KeeperController extends Controller
             $dropTransactions = [];
             foreach ($xml->league->transactions->transaction as $transaction) {
                 if ($transaction->type == 'drop') {
-
                     $dropTransactions[] = $transaction;
                 }
             }
-            dd($dropTransactions);
+            dd($dropTransactions[10]);
             $xmlObject = simplexml_load_string($body);
             // Now you can access the leagues data
 
